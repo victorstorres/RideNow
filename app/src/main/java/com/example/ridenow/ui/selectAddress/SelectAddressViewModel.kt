@@ -65,13 +65,11 @@ class SelectAddressViewModel @Inject constructor(
             if(customerId == "" || origin == "" || destination == ""){
                 return Pair(400, null)
             }
-            if(response.first == 200 && response.second?.options?.isEmpty() == true ){
-                return Pair(400, null)
-            }
+
             return Pair(response.first, response.second)
 
         } catch (e: Exception) {
-           return Pair(400, null)
+            return Pair(400, null)
         }
     }
 }
