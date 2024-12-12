@@ -66,6 +66,10 @@ class SelectAddressViewModel @Inject constructor(
                 return Pair(400, null)
             }
 
+            if(response.second?.options?.size == 0 ){
+                return Pair(404, null)
+            }
+
             return Pair(response.first, response.second)
 
         } catch (e: Exception) {
