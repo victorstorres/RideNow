@@ -1,5 +1,3 @@
-package com.example.ridenow.ui.selectDriver.components
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,10 +17,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-<<<<<<< develop
-import androidx.compose.material3.Divider
-=======
->>>>>>> Criando a parte a solicitação da viagem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,11 +35,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ridenow.R
-<<<<<<< develop
-import com.example.ridenow.data.model.Driver
-import com.example.ridenow.data.model.RideConfirmRequest
-=======
->>>>>>> Criando a parte a solicitação da viagem
 import com.example.ridenow.data.model.RideOption
 import com.example.ridenow.ui.selectDriver.SelectDriverUiState
 import com.example.ridenow.ui.theme.ButtonColor
@@ -54,17 +43,12 @@ import com.example.ridenow.ui.theme.ButtonColor
 @Composable
 private fun SheetContentRideNowPrev() {
     SheetContentRideNow()
-
 }
 
 @Composable
 fun SheetContentRideNow(
     state: SelectDriverUiState = SelectDriverUiState(),
-<<<<<<< develop
-    onClickSelectDriver: (String) -> Unit = {  }
-=======
     onClickSelectDriver: (RideOption) -> Unit = { }
->>>>>>> Criando a parte a solicitação da viagem
 ) {
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
@@ -73,27 +57,20 @@ fun SheetContentRideNow(
                 fontSize = 20.sp
             )
         )
-<<<<<<< develop
-        LazyColumn() {
-=======
+
         LazyColumn {
->>>>>>> Criando a parte a solicitação da viagem
             items(state.listDriver) { driver ->
                 CarCardScreen(
                     modifier = Modifier
                         .padding(10.dp),
                     driver = driver,
-<<<<<<< develop
-                    onTap = { name ->
-                        state.onChangeDriverSelect(name)
-=======
                     onTap = { drives ->
                         state.onChangeDriverSelect(drives)
->>>>>>> Criando a parte a solicitação da viagem
                     },
                 )
             }
         }
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -115,23 +92,14 @@ fun SheetContentRideNow(
                 )
             )
         }
-<<<<<<< develop
-        if (state.driverSelect.isNotEmpty()) {
-=======
+
         if (state.driverSelect.name.isNotEmpty()) {
->>>>>>> Criando a parte a solicitação da viagem
             Button(
                 colors = ButtonDefaults.buttonColors(
                     containerColor = ButtonColor
                 ),
                 onClick = {
-<<<<<<< develop
-                    onClickSelectDriver(
-                        state.driverSelect
-                    )
-=======
                     onClickSelectDriver(state.driverSelect)
->>>>>>> Criando a parte a solicitação da viagem
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -140,16 +108,11 @@ fun SheetContentRideNow(
 
                 ) {
                 Text(
-<<<<<<< develop
-                    "Fazer viagem com ${state.driverSelect}",
-=======
                     "Fazer viagem com ${state.driverSelect.name}",
->>>>>>> Criando a parte a solicitação da viagem
                     modifier = Modifier.align(Alignment.CenterVertically)
                 )
             }
         }
-
     }
 }
 
@@ -159,12 +122,7 @@ fun CarCardScreen(
     driver: RideOption,
     onTap: (RideOption) -> Unit = { }
 ) {
-
-<<<<<<< develop
-    var showDescription = remember { mutableStateOf(false) }
-=======
     val showDescription = remember { mutableStateOf(false) }
->>>>>>> Criando a parte a solicitação da viagem
 
     Card(
         shape = RoundedCornerShape(12.dp),
@@ -177,20 +135,12 @@ fun CarCardScreen(
                     },
                     onTap = {
                         onTap(
-<<<<<<< develop
-                        RideOption(
-                            name = driver.name,
-                            id = driver.id,
-                            value = driver.value
-                        ))
-=======
                             RideOption(
                                 name = driver.name,
                                 id = driver.id,
                                 value = driver.value
                             )
                         )
->>>>>>> Criando a parte a solicitação da viagem
                     }
                 )
             },
@@ -246,10 +196,6 @@ fun CarCardScreen(
                     )
                 )
                 if (showDescription.value) {
-<<<<<<< develop
-                    Divider()
-=======
->>>>>>> Criando a parte a solicitação da viagem
                     Text(
                         text = "Descrição: ${driver.description}",
                         color = Color.Gray,

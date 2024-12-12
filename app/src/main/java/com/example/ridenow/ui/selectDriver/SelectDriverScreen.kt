@@ -1,5 +1,6 @@
 package com.example.ridenow.ui.selectDriver
 
+import SheetContentRideNow
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.BottomSheetScaffold
@@ -12,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.ridenow.data.model.RideOption
 import com.example.ridenow.ui.selectDriver.components.ScaffoldRideNow
-import com.example.ridenow.ui.selectDriver.components.SheetContentRideNow
 
 @Preview
 @Composable
