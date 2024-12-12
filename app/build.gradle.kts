@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -40,6 +41,8 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
+
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -55,6 +58,10 @@ android {
 }
 
 dependencies {
+    implementation (libs.androidx.datastore.preferences)
+
+    implementation(libs.maps.compose)
+
 
     implementation(platform(libs.okhttp.bom))
     implementation(libs.okhttp)
@@ -62,16 +69,13 @@ dependencies {
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
 
-
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
 
-
     implementation(libs.hilt.android)
     annotationProcessor(libs.hilt.compiler)
     kapt(libs.hilt.compiler)
-
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

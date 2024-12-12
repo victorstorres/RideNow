@@ -1,6 +1,6 @@
 package com.example.ridenow.ui.selectAddress
 
-data class SelectedAddressUiState(
+data class SelectAddressUiState(
     val idUser: String = "",
     val onChangeIdUser : (String) -> Unit = {},
     val initLocation: String = "",

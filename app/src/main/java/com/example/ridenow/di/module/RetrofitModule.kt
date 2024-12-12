@@ -1,8 +1,8 @@
 package com.example.ridenow.di.module
 
-import com.example.ridenow.data.RetrofitInitialize
-import com.example.ridenow.data.repository.RetrofitRepository
-import com.example.ridenow.data.service.RetrofitService
+import com.example.ridenow.data.RideInitialize
+import com.example.ridenow.data.repository.RideRepository
+import com.example.ridenow.data.service.RideService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,14 +15,14 @@ object RetrofitModule{
 
     @Singleton
     @Provides
-    fun provideRetrofitService(): RetrofitService {
-        return RetrofitInitialize.initializeRetrofit()
+    fun provideRetrofitService(): RideService {
+        return RideInitialize.initializeRide()
     }
 
     @Singleton
     @Provides
-    fun provideRetrofitRepository(retrofitService: RetrofitService): RetrofitRepository {
-        return RetrofitRepository(retrofitService)
+    fun provideRetrofitRepository(rideService: RideService): RideRepository {
+        return RideRepository(rideService)
     }
 
 }

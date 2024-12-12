@@ -1,7 +1,6 @@
 package com.example.ridenow.data.model
 
-
-import android.location.Location
+import com.google.android.gms.maps.model.LatLng
 import com.google.gson.annotations.SerializedName
 
 data class RideEstimateRequest(
@@ -11,27 +10,24 @@ data class RideEstimateRequest(
 )
 
 
+
 data class RideEstimateResponse(
-    @SerializedName("origin") val origin: Location,
-    @SerializedName("destination") val destination: Location,
+    @SerializedName("origin") val origin: LatLng,
+    @SerializedName("destination") val destination: LatLng,
     @SerializedName("distance") val distance: Double,
     @SerializedName("duration") val duration: String,
     @SerializedName("options") val options: List<RideOption>,
-    @SerializedName("routeResponse") val routeResponse: Any // Ajuste o tipo de acordo com a resposta
+    @SerializedName("routeResponse") val routeResponse: Any
 )
 
-data class Location(
-    @SerializedName("latitude") val latitude: Double,
-    @SerializedName("longitude") val longitude: Double
-)
 
 data class RideOption(
-    @SerializedName("id") val id: Int,
-    @SerializedName("name") val name: String,
-    @SerializedName("description") val description: String,
-    @SerializedName("vehicle") val vehicle: String,
-    @SerializedName("review") val review: Review,
-    @SerializedName("value") val value: Double
+    @SerializedName("id") val id: Int = 0,
+    @SerializedName("name") val name: String = "",
+    @SerializedName("description") val description: String = "",
+    @SerializedName("vehicle") val vehicle: String = "",
+    @SerializedName("review") val review: Review = Review(0.0, ""),
+    @SerializedName("value") val value: Double = 0.0
 )
 
 data class Review(
