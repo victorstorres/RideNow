@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Button
@@ -38,12 +37,12 @@ import com.example.ridenow.ui.theme.ButtonColor
 @Preview
 @Composable
 private fun SelectedAddressPrev() {
-    SelectedAddressScreen()
+    SelectAddressScreen()
 }
 
 @Composable
-fun SelectedAddressScreen(
-    state: SelectedAddressUiState = SelectedAddressUiState(),
+fun SelectAddressScreen(
+    state: SelectAddressUiState = SelectAddressUiState(),
     onClickEstimateTravel: () -> Unit= {}
 ) {
     Scaffold(
@@ -112,7 +111,7 @@ fun SelectedAddressScreen(
 
 @Composable
 private fun CustomTextFields(
-    state: SelectedAddressUiState
+    state: SelectAddressUiState
 ) {
     Column(
         modifier = Modifier
