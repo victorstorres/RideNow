@@ -1,7 +1,6 @@
 package com.example.ridenow.navigation.navigations
 
 import android.annotation.SuppressLint
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -11,28 +10,22 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.ridenow.navigation.navigations.dialog.openDialogInvalidDestination
 import com.example.ridenow.navigation.navigations.dialog.openFieldsRequiredDialog
-import com.example.ridenow.ui.selectAddress.SelectedAddressScreen
-import com.example.ridenow.ui.selectAddress.SelectedAddressViewModel
+import com.example.ridenow.ui.selectAddress.SelectAddressScreen
+import com.example.ridenow.ui.selectAddress.SelectAddressViewModel
 import kotlinx.coroutines.launch
 
-private const val SELECTED_ADDRESS_ROUTE = "SelectedAddressRoute"
+private const val SELECT_ADDRESS_ROUTE = "SelectedAddressRoute"
 
 @SuppressLint("CoroutineCreationDuringComposition")
-fun NavGraphBuilder.selectedAddressNavigation(navController: NavHostController) {
-    composable(route = SELECTED_ADDRESS_ROUTE) {
-        val viewModel = hiltViewModel<SelectedAddressViewModel>()
+fun NavGraphBuilder.selectAddressNavigation(navController: NavHostController) {
+    composable(route = SELECT_ADDRESS_ROUTE) {
+        val viewModel = hiltViewModel<SelectAddressViewModel>()
         val state by viewModel.uiState.collectAsState()
+
         val coroutine = rememberCoroutineScope()
 
-//        coroutine.launch {
-//            viewModel.estimateRide(
-//                "custome1r123",
-//                "Av. Brasil, 2033 - Jardim America, São Paulo - SP, 01431-001",
-//                "Av. Paulista, 1538 - Bela Vista, São Paulo - SP, 01310-200"
-//            )
-//        }
 
-        SelectedAddressScreen(
+        SelectAddressScreen(
             state = state,
             onClickEstimateTravel = {
                 coroutine.launch {
@@ -40,9 +33,9 @@ fun NavGraphBuilder.selectedAddressNavigation(navController: NavHostController) 
                         state.idUser,
                         state.initLocation,
                         state.destination
-                    )?.let {
-                        when(it){
-                            200 -> "Sucesso"
+                    ).let {
+                        when(it.first){
+                            200 -> navController.navigateToSelectDriver()
                             404 -> navController.openDialogInvalidDestination()
                             400 -> navController.openFieldsRequiredDialog()
                         }
@@ -54,7 +47,7 @@ fun NavGraphBuilder.selectedAddressNavigation(navController: NavHostController) 
 }
 
 fun NavHostController.navigateToSelectedAddress() {
-    navigate(SELECTED_ADDRESS_ROUTE) {
+    navigate(SELECT_ADDRESS_ROUTE) {
         launchSingleTop = true
     }
 }
