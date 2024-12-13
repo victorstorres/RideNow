@@ -1,7 +1,6 @@
 package com.example.ridenow.navigation.navigations
 
 import android.annotation.SuppressLint
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -13,7 +12,7 @@ import com.example.ridenow.ui.travelHistory.TravelHistoryScreen
 import com.example.ridenow.ui.travelHistory.TravelHistoryViewModel
 import kotlinx.coroutines.launch
 
- const val TRAVEL_HISTORY_ROUTE = "TravelHistoryRoute"
+private const val TRAVEL_HISTORY_ROUTE = "TravelHistoryRoute"
 
 @SuppressLint("CoroutineCreationDuringComposition")
 fun NavGraphBuilder.travelHistoryNavigation(navController: NavHostController) {
