@@ -11,3 +11,4 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val ButtonColor = Color(0XFFF1F2937)
+val priceCard = Color(0xFF228B22)

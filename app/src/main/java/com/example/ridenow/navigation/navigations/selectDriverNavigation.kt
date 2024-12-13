@@ -17,6 +17,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.ridenow.map.MapViewModel
+import com.example.ridenow.navigation.navigations.dialog.openSuccessTravelDialog
 import com.example.ridenow.ui.selectDriver.SelectDriverScreen
 import com.example.ridenow.ui.selectDriver.SelectDriverViewModel
 import kotlinx.coroutines.launch
@@ -65,6 +66,9 @@ fun NavGraphBuilder.selectDriverNavigation(navController: NavHostController) {
                 driver ->
                 coroutine.launch {
                     selectDriverViewModel.confirmRide(driver).let {
+                        if(it){
+                            navController.openSuccessTravelDialog()
+                        }
 
                     }
                 }

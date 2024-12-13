@@ -48,6 +48,9 @@ fun NavGraphBuilder.selectAddressNavigation(navController: NavHostController) {
 
 fun NavHostController.navigateToSelectedAddress() {
     navigate(SELECT_ADDRESS_ROUTE) {
+        popUpTo(0) {
+            inclusive = true
+        }
         launchSingleTop = true
     }
 }

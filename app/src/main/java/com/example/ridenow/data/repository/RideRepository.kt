@@ -4,6 +4,7 @@ import com.example.ridenow.data.model.RideConfirmRequest
 import com.example.ridenow.data.model.RideConfirmResponse
 import com.example.ridenow.data.model.RideEstimateRequest
 import com.example.ridenow.data.model.RideEstimateResponse
+import com.example.ridenow.data.model.RideHistoryResponse
 import com.example.ridenow.data.service.RideService
 import retrofit2.Response
 
@@ -28,6 +29,19 @@ class RideRepository(private val rideService: RideService) {
         } else {
             val errorBody = response.errorBody()?.string()
             throw Exception("Erro na requisição: ${response.code()} - $errorBody")
+        }
+    }
+
+    suspend fun getHistory(customerId: String, driverId: String): Pair<Boolean, RideHistoryResponse?> {
+        return try {
+            val response = rideService.getHistory(customerId, driverId)
+            if (response.isSuccessful) {
+                Pair(true, response.body())
+            } else {
+                Pair(false, null)
+            }
+        } catch (e: Exception) {
+            Pair(false, null)
         }
     }
 

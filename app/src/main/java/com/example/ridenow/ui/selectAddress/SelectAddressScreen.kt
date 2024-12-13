@@ -122,9 +122,6 @@ private fun CustomTextFields(
         OutlinedTextField(
             value = state.idUser,
             onValueChange = state.onChangeIdUser,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Number
-            ),
             label = { Text("Digite o ID do usuário") },
             leadingIcon = {
                 Icon(
